@@ -10,6 +10,7 @@ Whole system was tested at Ubuntu 16.04 with ROS-kinetic and requirements below.
 * C++14
 * OMPL 1.5.0 (https://ompl.kavrakilab.org/installation.html) (not ROS version, install with ./install-ompl-ubuntu.sh)
 * fast gicp (https://github.com/SMRT-AIST/fast_gicp) (ROS version, NO CUDA version)
+* gtsam (4.x >) (https://gtsam.org)
 ***
 ## 2. Description
 * dead_reckoning: Kinematic-bicycle-model based Dead Reckoning.
