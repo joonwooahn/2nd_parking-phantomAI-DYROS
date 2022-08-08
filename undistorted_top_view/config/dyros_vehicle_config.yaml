@@ -1,0 +1,92 @@
+
+############################################################################
+##### dead_reckoning.cpp in dead_reckoning node
+center_to_rear: 1.5248  # Genesis G80 
+rear_wheel_distance: 1.633  # Genesis G80 
+backward_yaw_gain: 1.035    # To adjust yaw_rate in backward driving (The turnning radius of this case is larger than the forward driving case.)
+
+############################################################################ 
+##### parking_path_planning.cpp in parking_path_planner node
+turning_radius: 6.55     # / 2 km/h: ~0.28  
+planning_time:  5.0   # [sec] #scenario1: 10.0
+USING_TARGET_TREE: true
+using_hybrid_curvature: true # false true
+PLANNING_CNT: 4
+# EXTEND_LEN: -0.5        # last path
+WAYPOINT_INTERVAL: 0.01 # [m]
+max_curvature_derivative: 0.20
+center2rear:   1.01 #1.99
+extend_length: 1.01 #1.99 #0.55
+
+goal_bias:         0.1  # FOR TARGET-TREE
+target_bias_ratio:  0.5   # sampling distribution ratio in uniform / bias to target tree
+
+VISUALIZATION:        true     # target tree viz
+targetTree_viz_sparse: 39 # how sparse the target tree nodes
+
+RE_COLLISION_CHK:       true    # planned path must safe 
+PERPENDICULAR_PARKING:  true
+REVERSE_PARKING:        true
+
+# for re-planning
+replanning_wait_cnt_threshold: 7              # [cnt in tick]
+prev_goal_2_updated_goal_dist_threshold: 2.0  # [m]
+
+# sample collision check parameter
+OVERAL_WIDTH:       2.10  # [m]    
+# big_circle_distance:   1.43  # [m]    
+point_safe_region_rear:   0.19  # [m] rear
+# point_safe_region_front:  0.19  # [m] front
+# side_safe_region:         0.19  # [m]
+
+############################################################################
+##### LocalPlannerThread.cpp in path_tracker node
+REPLANNING: False
+WHEEL_BASE: 3.02                # [m]
+MIN_VEL_INPUT: 0.1              # [km/h]
+MAX_VEL_INPUT: 1.3              # [km/h]
+vehicle2switchingPointDist: 0.1 # [m]
+vehicle2goalPointDist:      0.1      # [m]
+LIMIT_DEGREE_DT: 180.0            # [deg] per dt
+LIMIT_DEGREE_DT_SWITCHING_PT: 30  # [deg] per dt
+LIMIT_VEL_DT: 2.0               # [km/h] per dt
+LIMIT_ACC_DT: 1.0               # [km/h^2] per dt
+WAITING_TIME_AT_SWITCHING_PT: 7.0 # [sec]
+STEER_GAIN: 1.05                
+future_traj_time: 3.9       # [sec]
+
+############################################################################
+##### undistorted_top_view.cpp in undistorted_top_view node
+OCAM_CALIB_FILE_PATH: "/home/joonwooahn/catkin_ws/src/undistorted_top_view/include"
+AVM_IMG_WIDTH:  150           # [pixel]
+AVM_IMG_HEIGHT: 150           # [pixel]
+REAL_OCCUPANCY_SIZE_X: 16.5   # [m]
+REAL_OCCUPANCY_SIZE_Y: 16.5   # [m]
+SLAM_OCCUPANCY_SIZE_X: 14.5   # [m]
+SLAM_OCCUPANCY_SIZE_Y: 14.5   # [m]
+OCCUPANCY_RATIO: 0.2          # percentage to determine occupied in each grid
+PADDING_VALUE: 128            # [pixel]
+PADDING_UP: true              # real Phantom data (bagfile: /phantom2)
+FULL_IMG_RESOL_WIDTH:  1928   # [pixel] phantom input image size 1920-->1928 // jw modify
+FULL_IMG_RESOL_HEIGHT: 1208   # [pixel] phantom input image size
+CROP_ROI_WIDTH: 1920
+CROP_ROI_HEIGHT: 1080
+PARKING_SPOT_WIDTH: 2.55  
+PARKING_SPOT_LENGTH: 5.3
+FREE_ERASE_GAIN: 1.05
+GRID_RESOLUTION: 0.25         # [meter]
+front_rear_dist: 21           # [pixel]
+
+PARKING_POSE_TOPIC_NAME: "parking_cands"
+
+############################################################################
+##### main_parking_space.py in parking_spot_detector_corner_point node
+ADDED_PATH_FOR_ROS: "/home/joonwooahn/catkin_ws/src/parking_spot_detector_corner_point/src/"
+CONFIDENCE_THRESHOLD: 0.9  # threshold of corner point detected by yolo 
+IOU_THRESHOLD: 0.5          # how overlapped the corner point
+VIEW_IMG: True              # to press 'p' for parking
+
+############################################################################
+##### main_parking_space.py in parking_spot_detector_bounding_box node
+ADDED_PATH_FOR_ROS_BOUNDINGBOX: "/home/joonwooahn/catkin_ws/src/yolo_parking/src/"
+BOUNDINGBOX_THRESHOLD: 0.9

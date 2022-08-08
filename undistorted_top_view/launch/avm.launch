@@ -1,0 +1,8 @@
+<launch>
+    <rosparam command="load" file="$(find undistorted_top_view)/config/dyros_vehicle_config.yaml" />
+    <!-- <node name="rviz_dyros_vehicle" pkg="rviz" type="rviz" args="-d $(find dyros_vehicle_joonwooahn)/rviz/dyros_parking.rviz" /> -->
+
+    <!-- occupancy grid map for parking -->
+	<node name="undistorted_top_view" pkg="undistorted_top_view" type="undistorted_top_view_node" output="screen" />
+
+</launch>

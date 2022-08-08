@@ -1,0 +1,40 @@
+<launch>
+    <rosparam command="load" file="$(find undistorted_top_view)/config/dyros_vehicle_config.yaml" />
+    <!-- <node name="rviz_dyros_vehicle" pkg="rviz" type="rviz" args="-d $(find dyros_vehicle_joonwooahn)/rviz/dyros_parking.rviz" /> -->
+
+    <!-- occupancy grid map for parking -->
+	<!-- <node name="undistorted_top_view" pkg="undistorted_top_view" type="undistorted_top_view_node" output="screen" /> -->
+
+    <!-- generate Dead Reackoning data & line feature of AVM-->
+    <node name="preprocess" pkg="phantomSLAM" type="preprocess_node" output="screen">
+    </node>
+
+    <!-- generate point cloud from line feature of AVM-->
+    <node name="avm2pointcloud" pkg="phantomSLAM" type="avm2pointcloud_node" output="screen">
+    </node>
+ 
+    <!-- localization and mapping -->
+    <node name="mapping" pkg="phantomSLAM" type="mapping_node" output="screen">
+    </node>
+    
+    <!-- optimization -->
+    <node name="optimization" pkg="phantomSLAM" type="optimization_node" output="screen">
+    </node>
+
+    <!-- comparing -->
+    <!-- <node name="loam_vs_YW" pkg="phantomSLAM" type="comparing_node" output="screen">
+    </node> -->
+
+
+    <!--  localmapping -->
+    <!-- <node name="localmapping" pkg="phantomSLAM" type="localmapping" output="screen">
+    </node> -->
+
+    <!-- icp test -->
+    <!-- <node name="icp_test" pkg="phantomSLAM" type="icp_test" output="screen">
+    </node> -->
+    
+    <!-- <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find phantomSLAM)/slam.rviz"/> -->
+  
+
+</launch>
