@@ -1,0 +1,21 @@
+<launch>
+        <node name="rviz_doRRTstar" pkg="rviz" type="rviz" args="-d $(find informed_rrt_star)/rviz/informedRRTstar_real.rviz" />
+
+	<param name="load_path" value="$(find dyros_controller)/map_files/map_carla.txt" />
+        <rosparam command="load" file="$(find informed_rrt_star)/config/planning_config.yaml" />
+
+<!-- 2-2. local map for parking -->
+        <node pkg = "car_can" type = "car_can" name = "car_can" output="screen"/>
+
+<!-- 2-2. local map for parking -->
+        <node pkg = "velodyne_height_map" type = "heightmap_node" name = "height_map_node" output="screen"/>
+
+<!-- 2-3. Parking path -->
+	<!-- Informed-RRT* -->
+	<node name="informed_rrt_star" pkg="informed_rrt_star" type="informed_rrt_star" output="screen" />
+
+<!-- main controller -->
+    <node pkg="dyros_controller" type="dyros_controller" name="DYROS_Controller" output="screen" />
+    <!-- <node name="rviz_doRRTstar" pkg="rviz" type="rviz" args="-d $(find informed_rrt_star)/rviz/informedRRTstar.rviz" /> -->
+    
+</launch>

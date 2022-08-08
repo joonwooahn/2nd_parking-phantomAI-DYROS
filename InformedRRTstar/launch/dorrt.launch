@@ -1,0 +1,4 @@
+<launch>
+ <node pkg = "doRRTstar" type = "doRRTstar" name = "doRRTstar" output="screen"/>
+ <node name="rviz_doRRTstar" pkg="rviz" type="rviz" args="-d /home/dyros-vehicle/catkin_ws/src/doRRTstar/rviz/dorrt.rviz" />
+</launch>

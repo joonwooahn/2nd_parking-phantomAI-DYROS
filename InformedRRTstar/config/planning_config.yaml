@@ -1,0 +1,10 @@
+using_hybrid_curvature: true # false true
+turning_radius: 7.0 # / 2 km/h: ~0.48  / 3km/h: ~0.36  / 4km/h: ~0.25
+# IONIQ turning diameter curb-to-curb: 10.7 m --> with consideration of the vehicle's width, the minimum turning radius is about 4.5 m...
+max_curvature_derivative: 0.1
+goal_bias: 0.1 # -0.5 FOR T.T.RRT*
+planning_time: 3.0 #[sec] #scenario1: 10.0
+center2rear: 1.5 # LiDAR to rear-axle. center2rear_axle - center_to_lidar (= 1.346 - 0.250)
+test_iteration: 1 
+extend_length: 0.55 #RIGHT: 0.45, LEFT: 0.6
+target_bias_ratio: 0.5

@@ -1,0 +1,26 @@
+<launch>
+
+	<param name="load_path" value="$(find dyros_controller)/map_files/map_carla.txt" />
+
+<!-- 2-2. local map for parking -->
+	<!-- <node name="heightmap_node" pkg="velodyne_height_map" type="heightmap_node" output="screen"/> -->
+
+<!-- 2-3. Parking path -->
+	<!-- DO-RRT* -->
+	<node name="informed_rrt_star" pkg="informed_rrt_star" type="informed_rrt_star" output="screen" />
+	<!-- DO-RRT* -->
+	<!-- <node name="doRRTstar" pkg="doRRTstar" type="doRRTstar" output="screen" /> -->
+	<!-- Dubins path -->
+    	<!-- <node name="parking_original" pkg="parking_original" type="parking_original" output="screen" /> -->
+	<!-- Hybrid A* -->
+		<!-- <node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" /> -->
+		<!-- <param name="use_sim_time" value="false" /> -->
+	    <!-- <node name="a_star" pkg="hybrid_astar" type="hybrid_astar" output="screen" /> -->
+
+<!-- 2-4. Smoothing -->
+	<!-- <node name="hybrid_astar" pkg="hybrid_astar" type="hybrid_astar" output="screen" /> -->
+<!-- main controller -->
+    <node pkg="dyros_controller" type="dyros_controller" name="DYROS_Controller" output="screen" />
+    <node name="rviz_doRRTstar" pkg="rviz" type="rviz" args="-d $(find dyros_controller)/rviz/dorrt_sim.rviz" />
+
+</launch>
