@@ -8,8 +8,8 @@ Whole system was tested at Ubuntu 16.04 with ROS-kinetic and requirements below.
 * CARLA 0.9.7
 * OpenCV 4.4.0 // YOU NEED TO ADJUST HEADER FILES DEPENDING ON THE VERSION
 * C++14
-* OMPL 1.5.0
-* fast gicp (https://github.com/SMRT-AIST/fast_gicp)
+* OMPL 1.5.0 (https://ompl.kavrakilab.org/installation.html) (not ROS version, install with ./install-ompl-ubuntu.sh)
+* fast gicp (https://github.com/SMRT-AIST/fast_gicp) (ROS version, NO CUDA version)
 ***
 ## 2. Description
 * dead_reckoning: Kinematic-bicycle-model based Dead Reckoning.
@@ -19,11 +19,11 @@ Whole system was tested at Ubuntu 16.04 with ROS-kinetic and requirements below.
 * undistorted_top_view: transform the cameras of the vehicle to a bird's-eye-view image (AVM) by Scaramuzza.
 * usb_cam-develop (optional): uses the cam related packages for real-vehicle test.
 * yolo_parking_v5: finds a nearest parking spot to the vehicle using YOLOv5 (bounding box detection algorithm).
-(using bounding box) weight file: https://drive.google.com/file/d/1fFOeJ8czp22p5sc0LwL5XxCIkZwWVR4P/view?usp=sharing (-------------------------) 
+(using bounding box) weight file: https://drive.google.com/file/d/18qxFFA_oHFXcSXT4WAdSS2n3xlRyO8ul/view?usp=sharing. 
 Put this folder './weights_files/only_white/' from the above link into 'yolo_parking' directory.  
 Edit a line 34 in 'yolo_parking/src/main_parking_space.py', in accordance with your directory.  
 YOLOv5 https://github.com/ultralytics/yolov5/tree/v5.0 
 (You can get detail descriptions of training your own custom data in above link)  
 YOLO generate label data: https://github.com/AlexeyAB/Yolo_mark  
 *parking_spot_detector_corner_point (using corner points): finds and tracks the parking spot using corner points. A detailed description of the algorithm is in **RITA21_Deep Learning based Parking Slot Detection and Tracking_PSDT-Net_first_ver.pdf**, and the code is based on this repository (https://github.com/younghyopark/parking_spot_corner_detector).  
-(using corner points) weight file: https://drive.google.com/drive/folders/1vsYI9NJzLHV9wCNxqGuXBrgRSA2wK378?usp=sharing(-------------). put weight files from the above link into 'runs_after_planning'. You may create the 'runs_after_planning' folder into './script/phantom_avm_rgb_weight/'.
+(using corner points) weight file: https://drive.google.com/file/d/1dY08aWD9sz-sRfjG2G0RtuIYAOLf8nlV/view?usp=sharing. put weight files from the above link into 'runs_after_planning'. You may create the 'runs_after_planning' folder into './script/phantom_avm_rgb_weight/'.
