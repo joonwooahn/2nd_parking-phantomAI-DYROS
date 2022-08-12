@@ -32,4 +32,5 @@ YOLO generate label data: https://github.com/AlexeyAB/Yolo_mark
 ## 3. How to Run
 * $ roslaunch dyros_controller dyros_controller_phantom.launch
 * $ cd ./yolo_parking_v5 && python3 main_parking_space.py
-* During parking path tracking, if the parking spot by the corner point is recognized and judged to be correct, the vehicle is stopped and replanning is performed by pressing the 'r' and 'p' keys in the corner point recognition window.
+* When the parking path is planned, run the vision SLAM program by '$ roslaunch phantomSLAM slam.launch'.
+* During parking path tracking, if the parking spot by the corner point is recognized and judged to be correct, the vehicle is stopped and replanning is performed by pressing the 'r' and 'p' keys in the corner point recognition window. Then, restart the vision SLAM ($ roslaunch phantomSLAM slam.launch).  
