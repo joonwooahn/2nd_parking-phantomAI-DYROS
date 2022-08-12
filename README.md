@@ -28,3 +28,8 @@ YOLOv5 https://github.com/ultralytics/yolov5/tree/v5.0
 YOLO generate label data: https://github.com/AlexeyAB/Yolo_mark  
 *parking_spot_detector_corner_point (using corner points): finds and tracks the parking spot using corner points. A detailed description of the algorithm is in **RITA21_Deep Learning based Parking Slot Detection and Tracking_PSDT-Net_first_ver.pdf**, and the code is based on this repository (https://github.com/younghyopark/parking_spot_corner_detector).  
 (using corner points) weight file: https://drive.google.com/file/d/1dY08aWD9sz-sRfjG2G0RtuIYAOLf8nlV/view?usp=sharing. put weight files from the above link into 'runs_after_planning'. You may create the 'runs_after_planning' folder into './script/phantom_avm_rgb_weight/'.
+
+## 3. How to Run
+* $ roslaunch dyros_controller dyros_controller_phantom.launch
+* $ cd ./yolo_parking_v5 && python3 main_parking_space.py
+* During parking path tracking, if the parking spot by the corner point is recognized and judged to be correct, the vehicle is stopped and replanning is performed by pressing the 'r' and 'p' keys in the corner point recognition window.
